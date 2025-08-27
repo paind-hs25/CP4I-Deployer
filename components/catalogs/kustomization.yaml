@@ -1,14 +1,14 @@
 resources: 
-#- ibm-apiconnect.yaml
-#- ibm-appconnect.yaml
-#- ibm-aspera.yaml
-#- ibm-datapower.yaml
-#- ibm-eventautomation-flink.yaml
-#- ibm-eventendpointmanagement.yaml
-#- ibm-eventprocessing.yaml
-#- ibm-eventstreams.yaml
-- ibm-foundational-services.yaml
-#- ibm-integration-asset-repository.yaml
-- ibm-integration-platform-navigator.yaml
-#- ibm-mq.yaml
-#- ibm-redis.yaml
+#- apiconnect.yaml
+#- appconnect.yaml
+#- aspera.yaml
+#- datapower-gateway.yaml
+#- eventautomation-flink.yaml
+#- eventendpointmanagement.yaml
+#- eventprocessing.yaml
+#- eventstreams.yaml
+- foundational-services.yaml
+#- integration-asset-repository.yaml
+#- cp4i.yaml
+#- mq.yaml
+#- redis.yaml

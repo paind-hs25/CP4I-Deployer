@@ -1,0 +1,5 @@
+resources: 
+- foundational-services.yaml
+- cp4i.yaml
+
+namespace: openshift-operators

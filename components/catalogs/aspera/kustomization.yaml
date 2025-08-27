@@ -1,0 +1,3 @@
+resources: 
+- aspera.yaml
+- redis.yaml

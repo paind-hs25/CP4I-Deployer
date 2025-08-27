@@ -1,0 +1,3 @@
+resources: 
+- foundational-services.yaml
+- cp4i.yaml
