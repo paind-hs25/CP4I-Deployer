@@ -1,4 +1,4 @@
 resources:
-#- ../../components/catalogs/cp4i
+- ../../components/catalogs/cp4i
 #- ../../components/namespaces/openshift-operators
-- ../../components/operators/cp4i
+#- ../../components/operators/cp4i

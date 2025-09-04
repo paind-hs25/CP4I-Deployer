@@ -1,0 +1,13 @@
+apiVersion: integration.ibm.com/v1beta1
+kind: PlatformNavigator
+metadata:
+  name: integration-quickstart
+  namespace: integration
+  labels:
+    backup.integration.ibm.com/component: platformnavigator        
+spec:
+  license:
+    accept: true
+    license: L-CYPF-CRPF3H
+  replicas: 1
+  version: 16.1.2
