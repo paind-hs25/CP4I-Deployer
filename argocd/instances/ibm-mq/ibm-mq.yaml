@@ -9,7 +9,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: integration
+    namespace: ibm-mq
     server: 'https://kubernetes.default.svc'
   project: default
   source:

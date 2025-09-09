@@ -1,2 +1,5 @@
 resources:
 - ../../argocd/catalogs/ibm-mq
+- ../../argocd/namespaces/ibm-mq
+- ../../argocd/operators/ibm-mq
+- ../../argocd/instances/ibm-mq
