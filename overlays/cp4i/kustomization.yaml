@@ -1,4 +1,5 @@
 resources:
-- ../../components/catalogs/cp4i
-#- ../../components/namespaces/openshift-operators
-#- ../../components/operators/cp4i
+- ../../argocd/namespaces/ibm-common-services
+- ../../argocd/namespaces/integration
+- ../../argocd/services/cp4i
+- ../../argocd/instances/platform-ui
