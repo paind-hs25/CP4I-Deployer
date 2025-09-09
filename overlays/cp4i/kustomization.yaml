@@ -1,5 +1,5 @@
 resources:
 - ../../argocd/namespaces/ibm-common-services
 - ../../argocd/namespaces/integration
-- ../../argocd/services/cp4i
+- ../../argocd/operators/cp4i
 - ../../argocd/instances/platform-ui

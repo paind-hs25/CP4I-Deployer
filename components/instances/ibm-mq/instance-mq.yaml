@@ -1,0 +1,17 @@
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: quickstart-cp4i
+spec:
+  version: 9.4.3.1-r1
+  license:
+    accept: false
+    license: L-CYPF-CRPF3H
+    use: NonProduction
+  web:
+    enabled: true
+  queueManager:
+    name: "QUICKSTART"
+    storage:
+      queueManager:
+        type: ephemeral
