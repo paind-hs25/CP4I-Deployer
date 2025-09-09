@@ -5,7 +5,7 @@ metadata:
 spec:
   version: 9.4.3.1-r1
   license:
-    accept: false
+    accept: true
     license: L-CYPF-CRPF3H
     use: NonProduction
   web:
