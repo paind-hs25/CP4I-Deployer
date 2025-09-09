@@ -3,7 +3,7 @@ kind: QueueManager
 metadata:
   name: quickstart-cp4i
 spec:
-  version: 9.4.3.1-r1
+  version: 9.4.3.0-r1
   license:
     accept: true
     license: L-CYPF-CRPF3H
