@@ -1,20 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager-operator
+  name: namespace-cert-manager
   namespace: openshift-gitops
   annotations:
-    argocd.argoproj.io/sync-wave: "200"
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+    argocd.argoproj.io/sync-wave: "100"
 spec:
   destination:
-    namespace: cert-manager-operator
     server: 'https://kubernetes.default.svc'
   project: default
   source:
     repoURL: 'https://github.com/paind-hs25/paind.v0.0.git'
-    path: components/operators/cert-manager
+    path: components/namespaces/cert-manager
     targetRevision: main
 
   syncPolicy:

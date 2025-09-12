@@ -2,4 +2,5 @@ resources:
 - ../../argocd/catalogs/ibm-apiconnect
 - ../../argocd/namespaces/ibm-apiconnect
 - ../../argocd/operators/ibm-apiconnect
+- ../../argocd/operators/cert-manager
 - ../../argocd/instances/ibm-apiconnect
