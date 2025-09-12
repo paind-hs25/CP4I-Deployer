@@ -1,0 +1,14 @@
+kind: APIConnectCluster
+apiVersion: apiconnect.ibm.com/v1beta1
+metadata:
+  name: api-management
+  namespace: ibm-apiconnect
+spec:
+  license:
+    accept: true
+    license: L-RAWZ-DSFFFV
+    metric: VIRTUAL_PROCESSOR_CORE
+    use: production
+  profile: n1xc7.m48
+  version: 10.0.10.0
+  storageClassName: ocs-external-storagecluster-ceph-rbd # User has to configure the name

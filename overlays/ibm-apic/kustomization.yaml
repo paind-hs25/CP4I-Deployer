@@ -1,0 +1,5 @@
+resources:
+- ../../argocd/catalogs/ibm-apiconnect
+- ../../argocd/namespaces/ibm-apiconnect
+- ../../argocd/operators/ibm-apiconnect
+- ../../argocd/instances/ibm-apiconnect
