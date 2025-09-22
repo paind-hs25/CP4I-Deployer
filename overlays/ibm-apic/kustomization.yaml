@@ -1,6 +1,10 @@
 resources:
 - ../../argocd/catalogs/ibm-apiconnect
+- ../../argocd/catalogs/ibm-datapower-gateaway
 - ../../argocd/namespaces/ibm-apiconnect
+- ../../argocd/namespaces/cert-manager
+- ../../argocd/operatorGroups/cert-manager
 - ../../argocd/operators/ibm-apiconnect
 - ../../argocd/operators/cert-manager
+- ../../argocd/operators/ibm-datapower-gateaway
 - ../../argocd/instances/ibm-apiconnect
