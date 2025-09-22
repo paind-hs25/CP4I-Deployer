@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ibm-AssetRepository-instance
+  name: ibm-asset-repository-instance
   namespace: openshift-gitops
   annotations:
     argocd.argoproj.io/sync-wave: "300"
