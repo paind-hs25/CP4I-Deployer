@@ -18,4 +18,4 @@ spec:
       class: ocs-external-storagecluster-ceph-rbd # User has to configure the name
     couchVolume:
       class: ocs-external-storagecluster-ceph-rbd # User has to configure the name
-  version: 4.2
+  version: "4.2"
