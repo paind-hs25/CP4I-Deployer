@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ibm-event-manager-catalog
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    repoURL: 'https://github.com/paind-hs25/paind.v0.0.git'
+    path: components/catalogs/eventendpointmanagement
+    targetRevision: main
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
