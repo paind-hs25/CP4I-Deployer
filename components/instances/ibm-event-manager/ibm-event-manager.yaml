@@ -1,0 +1,19 @@
+apiVersion: events.ibm.com/v1beta1
+kind: EventEndpointManagement
+metadata:
+  name: event-manager-instance
+  labels:
+    backup.events.ibm.com/component: eventendpointmanagement
+  namespace: ibm-event-manager
+spec:
+  license:
+    accept: true
+    license: L-CYPF-CRPF3H
+    metric: VIRTUAL_PROCESSOR_CORE
+    use: CloudPakForIntegrationProduction
+  manager:
+    authConfig:
+      authType: INTEGRATION_KEYCLOAK
+    storage:
+      storageClassName: ocs-external-storagecluster-ceph-rbd # adjust to your environment
+      type: persistent-claim
