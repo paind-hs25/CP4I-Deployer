@@ -1,0 +1,5 @@
+resources:
+- ../../argocd/catalogs/ibm-event-manager
+- ../../argocd/operators/ibm-event-manager
+- ../../argocd/namespaces/ibm-event-manager
+- ../../argocd/instances/ibm-event-manager

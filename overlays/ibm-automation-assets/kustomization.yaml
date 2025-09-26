@@ -1,0 +1,5 @@
+resources:
+- ../../argocd/namespaces/ibm-automation-assets
+- ../../argocd/catalogs/ibm-automation-assets
+- ../../argocd/operators/ibm-automation-assets
+- ../../argocd/instances/ibm-automation-assets
