@@ -1,0 +1,9 @@
+resources:
+# --- Namespaces ---
+
+# --- CatalogSources ---
+- ../argocd/catalogs
+
+# --- OperatorGroups ---
+
+# --- Operators ---

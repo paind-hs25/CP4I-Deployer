@@ -1,0 +1,6 @@
+resources:
+- ibm-apiconnect
+- ibm-automation-assets
+- ibm-datapower-gateway
+- ibm-event-manager
+- ibm-mq
