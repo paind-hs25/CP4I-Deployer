@@ -1,9 +1,15 @@
 resources:
 # --- Namespaces ---
+- ../argocd/namespaces
 
 # --- CatalogSources ---
 - ../argocd/catalogs
 
 # --- OperatorGroups ---
+- ../argocd/operatorGroups
 
 # --- Operators ---
+- ../argocd/operators
+
+# --- Instances ---
+- ../argocd/instances/platform-ui

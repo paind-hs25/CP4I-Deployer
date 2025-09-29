@@ -1,9 +1,10 @@
 resources:
-- ibm-apache-flink
+- cert-manager
 - ibm-apiconnect
 - ibm-app-connect
 - ibm-automation-assets
-- ibm-datapower-gateway
+- ibm-common-services
+- ibm-event-automation
 - ibm-event-manager
-- ibm-event-processing
 - ibm-mq
+- integration
