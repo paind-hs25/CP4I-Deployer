@@ -1,0 +1,12 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: platform-ui-banner
+spec:
+  backgroundColor: '#0088ce'
+  color: '#fff'
+  link:
+    href: "https://$(PLATFORM_UI_HOST)"
+    text: "Platform UI"
+  location: BannerTop
+  text: "Your CP4I Platform UI is ready!"
