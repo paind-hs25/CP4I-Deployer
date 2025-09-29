@@ -1,0 +1,6 @@
+resources:
+- ../../argocd/namespaces/ibm-event-automation
+- ../../argocd/catalogs/ibm-event-processing
+- ../../argocd/catalogs/ibm-apache-flink
+- ../../argocd/operators/ibm-event-processing
+- ../../argocd/operators/ibm-apache-flink
