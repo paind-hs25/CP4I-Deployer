@@ -1,0 +1,26 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: DesignerAuthoring
+metadata:
+  labels:
+    backup.appconnect.ibm.com/component: designerauthoring
+  name: integrationdesigner
+  namespace: ibm-app-connect
+spec:
+  authentication:
+    integrationKeycloak:
+      enabled: true
+  authorization:
+    integrationKeycloak:
+      enabled: true
+  couchdb:
+    replicas: 1
+    storage:
+      size: 10Gi
+      type: persistent-claim
+      class: ocs-external-storagecluster-ceph-rbd # must be adapted to the cluster
+  license:
+    accept: true
+    license: L-KPRV-AUG9NC
+    use: CloudPakForIntegrationNonProduction
+  replicas: 1
+  version: '13.0'
