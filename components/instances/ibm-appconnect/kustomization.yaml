@@ -1,3 +1,4 @@
 resources:
 - ibm-appconnect-dashboard.yaml
 - ibm-appconnect-integrationdesigner.yaml
+- ibm-appconnect-integrationruntime.yaml
