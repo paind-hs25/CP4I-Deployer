@@ -12,4 +12,4 @@ resources:
 - ../argocd/operators
 
 # --- Instances ---
-- ../argocd/instances/platform-ui
+- ../argocd/instances

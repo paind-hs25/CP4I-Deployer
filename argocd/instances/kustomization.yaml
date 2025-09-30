@@ -1,0 +1,5 @@
+resources:
+- ibm-apiconnect
+- ibm-event-manager
+- ibm-mq
+- platform-ui
