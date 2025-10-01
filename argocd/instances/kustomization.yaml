@@ -1,5 +1,7 @@
 resources:
 - ibm-apiconnect
+- ibm-appconnect-dashboard
+- ibm-appconnect-designer
 - ibm-event-manager
 - ibm-event-streams
 - ibm-mq
