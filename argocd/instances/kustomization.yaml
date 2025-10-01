@@ -1,5 +1,6 @@
 resources:
 - ibm-apiconnect
 - ibm-event-manager
+- ibm-event-streams
 - ibm-mq
 - platform-ui
