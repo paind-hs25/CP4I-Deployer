@@ -7,4 +7,5 @@ resources:
 - ibm-datapower-gateway
 - ibm-event-manager
 - ibm-event-processing
+- ibm-event-streams
 - ibm-mq
