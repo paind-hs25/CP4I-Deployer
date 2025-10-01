@@ -5,6 +5,5 @@ resources:
 - ibm-automation-assets
 - ibm-common-services
 - ibm-event-automation
-- ibm-event-manager
 - ibm-mq
 - integration

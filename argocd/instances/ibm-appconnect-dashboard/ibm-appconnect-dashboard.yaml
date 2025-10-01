@@ -9,7 +9,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: ibm-apiconnect
+    namespace: ibm-app-connect
     server: 'https://kubernetes.default.svc'
   project: default
   source:

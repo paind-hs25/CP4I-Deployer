@@ -9,7 +9,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: ibm-automation-assets
+    namespace: ibm-event-automation
     server: 'https://kubernetes.default.svc'
   project: default
   source:

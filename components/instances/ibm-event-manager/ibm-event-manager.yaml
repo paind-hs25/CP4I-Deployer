@@ -4,7 +4,7 @@ metadata:
   name: event-manager-instance
   labels:
     backup.events.ibm.com/component: eventendpointmanagement
-  namespace: ibm-event-manager
+  namespace: ibm-event-automation
 spec:
   license:
     accept: true
