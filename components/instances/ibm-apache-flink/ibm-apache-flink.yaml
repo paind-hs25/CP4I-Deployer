@@ -1,0 +1,63 @@
+apiVersion: flink.apache.org/v1beta1
+kind: FlinkDeployment
+metadata:
+  name: flink-instance
+  namespace: ibm-event-automation
+spec:
+  flinkConfiguration:
+    license.use: EventAutomationProduction
+    license.license: 'L-CYBH-K48BZQ'
+    license.accept: 'true'
+    high-availability.type: org.apache.flink.kubernetes.highavailability.KubernetesHaServicesFactory
+    high-availability.storageDir: 'file:///opt/flink/volume/flink-ha'
+    restart-strategy.type: failure-rate
+    restart-strategy.failure-rate.max-failures-per-interval: '10'
+    restart-strategy.failure-rate.failure-rate-interval: '10 min'
+    restart-strategy.failure-rate.delay: '30 s'
+    execution.checkpointing.interval: '5000'
+    execution.checkpointing.unaligned.enabled: 'false'
+    state.backend.type: rocksdb
+    execution.checkpointing.incremental: 'true'
+    state.backend.rocksdb.use-bloom-filter: 'true'
+    execution.checkpointing.dir: 'file:///opt/flink/volume/flink-cp'
+    execution.checkpointing.num-retained: '3'
+    execution.checkpointing.savepoint-dir: 'file:///opt/flink/volume/flink-sp'
+    taskmanager.numberOfTaskSlots: '10'
+    table.exec.source.idle-timeout: '30 s'
+    security.ssl.enabled: 'true'
+    security.ssl.truststore: /opt/flink/tls-cert/truststore.jks
+    security.ssl.truststore-password: admin
+    security.ssl.keystore: /opt/flink/tls-cert/keystore.jks
+    security.ssl.keystore-password: admin
+    security.ssl.key-password: admin
+    kubernetes.secrets: 'flink-instance-cert:/opt/flink/tls-cert'
+  serviceAccount: flink
+  podTemplate:
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: pod-template
+    spec:
+      containers:
+        - name: flink-main-container
+          volumeMounts:
+            - name: flink-logs
+              mountPath: /opt/flink/log
+            - name: flink-volume
+              mountPath: /opt/flink/volume
+      volumes:
+        - name: flink-logs
+          emptyDir: {}
+        - name: flink-volume
+          persistentVolumeClaim:
+            claimName: ibm-flink-pvc
+  jobManager:
+    replicas: 1
+    resource:
+      memory: '2048m'
+      cpu: 0.25
+  taskManager:
+    resource:
+      memory: '2048m'
+      cpu: 1
+  mode: native

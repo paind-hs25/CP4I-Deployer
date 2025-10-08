@@ -1,0 +1,3 @@
+resources:
+- create-flink-deployment-jks-certificate.yaml
+- create-flink-operator-jks-certificate.yaml

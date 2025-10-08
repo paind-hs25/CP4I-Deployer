@@ -1,0 +1,12 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ibm-flink-pvc
+  namespace: ibm-event-automation
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: ocs-external-storagecluster-cephfs # must be adapted to the cluster

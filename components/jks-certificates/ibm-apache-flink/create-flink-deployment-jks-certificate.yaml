@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: flink-instance-cert-password
+  namespace: ibm-event-automation
+type: Opaque
+data:
+  password: YWRtaW4=
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: flink-instance-cert
+  namespace: ibm-event-automation
+spec:
+  dnsNames:
+    - '*.ibm-event-automation.svc'
+    - '*.svc.cluster.local'
+    - 'flink-instance-rest'
+  keystores:
+    jks:
+      create: true
+      passwordSecretRef:
+        name: flink-instance-cert-password
+        key: password
+  issuerRef:
+    kind: ClusterIssuer
+    name: ea-cluster-issuer
+  commonName: flink-instance
+  secretName: flink-instance-cert
+---
