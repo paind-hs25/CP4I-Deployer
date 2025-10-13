@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ArgoCD
 metadata:
   name: openshift-gitops-custom
+  namespace: openshift-gitops
 spec:
   applicationInstanceLabelKey: argo.custom/instance
   server:
