@@ -1,0 +1,23 @@
+apiVersion: events.ibm.com/v1beta1
+kind: EventProcessing
+metadata:
+  name: eventprocessing-instance
+  namespace: ibm-event-automation
+spec:
+  license:
+    accept: true
+    license: 'L-CYBH-K48BZQ'
+    use: EventAutomationProduction
+  flink:
+    endpoint: flink-instance-rest.ibm-event-automation.svc.cluster.local:8081 # adjust to your environment
+    tls:
+      secretName: flink-instance-cert
+      secretKeyRef:
+        name: flink-instance-cert-password
+        key: password
+  authoring:
+    storage:
+      type: persistent-claim
+      storageClassName: ocs-external-storagecluster-cephfs # adjust to your environment
+    authConfig:
+      authType: LOCAL

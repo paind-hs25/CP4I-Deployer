@@ -1,0 +1,3 @@
+resources:
+- ibm-apache-flink.yaml
+- ibm-event-processing.yaml
