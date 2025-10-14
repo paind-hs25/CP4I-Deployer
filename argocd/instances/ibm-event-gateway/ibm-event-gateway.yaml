@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ibm-event-gateway-instance
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "300"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: ibm-event-automation
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    repoURL: 'https://github.com/paind-hs25/paind.v0.0.git'
+    path: components/instances/ibm-event-gateway
+    targetRevision: main
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      syncOptions:
+        - Retry=true
+      retry:
+        limit: 5                
+        backoff:
+          duration: 1m
+          factor: 2
+          maxDuration: 10m
