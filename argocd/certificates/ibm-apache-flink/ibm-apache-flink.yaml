@@ -4,14 +4,14 @@ metadata:
   name: apache-flink-jks-certificates
   namespace: openshift-gitops
   annotations:
-    argocd.argoproj.io/sync-wave: "250"
+    argocd.argoproj.io/sync-wave: "201"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: ibm-event-automation
     server: 'https://kubernetes.default.svc'
-  project: ibm-event-automation
+  project: cert-manager
   source:
     repoURL: 'https://github.com/paind-hs25/paind.v0.0.git'
     path: components/jks-certificates/ibm-apache-flink
