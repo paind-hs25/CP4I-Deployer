@@ -1,45 +1,20 @@
 apiVersion: events.ibm.com/v1beta1
 kind: EventGateway
 metadata:
-  name: "demogroup-gateway1"
+  name: gateway-1
+  labels:
+    backup.events.ibm.com/component: eventgateway
+  namespace: ibm-event-automation
 spec:
   license:
     accept: true
-    license: "L-CYPF-CRPF3H"
-    metric: "VIRTUAL_PROCESSOR_CORE"
-    use: "CloudPakForIntegrationProduction"
-  managerEndpoint: "https://eem.event-manager-instance-ibm-eem-server-ibm-event-manager.apps.itz-9a1gjo.infra01-lb.tok04.techzone.ibm.com/gateway"
+    license: L-CYPF-CRPF3H
+    metric: VIRTUAL_PROCESSOR_CORE
+    use: CloudPakForIntegrationProduction
+  managerEndpoint: >- # adjust to your environment
+    https://event-manager-instance-ibm-eem-gateway-ibm-event-automation.apps.itz-qs5sfj.hub03-lb.techzone.ibm.com 
   maxNumKafkaBrokers: 20
-  gatewayGroupName: "demogroup"
-  gatewayID: "gateway1"
-  replicas: 1
-  template:
-    pod:
-      spec:
-        containers:
-          - name: egw
-            env:
-              - name: BACKEND_CA_CERTIFICATES
-                value: "-----BEGIN CERTIFICATE-----\nMIIDbDCCAlSgAwIBAgIQDEOigR0jhQvN43wQCxjBkjANBgkqhkiG9w0BAQsFADBQ\nMSYwJAYDVQQKEx1JQk0gRXZlbnQgRW5kcG9pbnQgTWFuYWdlbWVudDEmMCQGA1UE\nAxMdSUJNIEV2ZW50IEVuZHBvaW50IE1hbmFnZW1lbnQwHhcNMjUwOTIzMjEzODA0\nWhcNMjYwOTIzMjEzODA0WjBQMSYwJAYDVQQKEx1JQk0gRXZlbnQgRW5kcG9pbnQg\nTWFuYWdlbWVudDEmMCQGA1UEAxMdSUJNIEV2ZW50IEVuZHBvaW50IE1hbmFnZW1l\nbnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC3lWC4AqdyRmiw7M3q\ngOn6QxPlS9UGI6qkOyyiwTdT0+nCzldGLzJeKZwP/pGI28+AasMWteDiv2yYQjaf\nggju5NBUqI6JtKnP4d8LHzt9A7NN6M9R5kL2NXtqAZaGvUXBHll9nfeN67Fcj7AN\nc1cWo07hDiCml5tl/XFjYPyL2PoG+2JO/oWfo4qiXSJ6Seujni+Lc9dgj+r3OUSV\niK72ee2hs1KJgmcMoEqbtZ93Dh68KzYyRFJbfp638sHjS33srOA28IPaAy+qpKzy\nvMqvOb6QQsQLa1VIhWfXCfpzPboeSwHbIg7RM4YlxnrYi0rsRtAMdfEfWzghPdLT\nQuBLAgMBAAGjQjBAMA4GA1UdDwEB/wQEAwICpDAPBgNVHRMBAf8EBTADAQH/MB0G\nA1UdDgQWBBThfpMs9KlPJmvrjPJTPjNLQsjS8zANBgkqhkiG9w0BAQsFAAOCAQEA\niUMi2TdAvD3CM2iq6kzHKxMtCcsI4H5tr7cEvQ3Pqz9IRewCOG/kIL2shBSoHbal\nA4ksIjUyx7qLCfe7N+2Byw7BO8ToGAbS6bfQAY+Irjhh10WWYqLa0E0ggPntXC5f\nmkAdw8Lwmj+6ttaVh+qRxVg25EwJ3qHioNYfZrWdbqNJNNcJsBs621bF7L2htqxf\nTNx4pcWWfPlDzyGurxbBV89DQ5GyA9tTbeGHauEUgrzvYPQ28kI2YgISCvvuqd6U\nFiXvP4i6P+poRXeRAfKBDvicZRicAIPu2FpHdtRBkM5tLVedwC/P8Zu/AV7KvcLm\ng3Geq6ShBMo91cn7uZ1MQg==\n-----END CERTIFICATE-----\n"
-              - name: API_KEY
-                valueFrom:
-                  secretKeyRef:
-                    key: apiKey
-                    name: "demogroup-gateway1"
-              - name: GATEWAY_TRUST_PEM
-                valueFrom:
-                  secretKeyRef:
-                    key: tls.crt
-                    name: "demogroup-gateway1-certs"
+  gatewayGroupName: gateway-group
+  gatewayID: gateway-1
   tls:
-    caSecretName: "demogroup-gateway1-certs"
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: "demogroup-gateway1"
-  labels:
-    app: "demogroup-gateway1"
-type: Opaque
-stringData:
-  apiKey: "75f3718e-8902-45ff-90b1-81e6d0a98673"
+    caSecretName: event-manager-instance-ibm-eem-manager-ca
