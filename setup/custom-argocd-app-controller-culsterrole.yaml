@@ -428,3 +428,10 @@ rules:
       - events.ibm.com
     resources:
       - eventendpointmanagements
+      - eventprocessings
+  - verbs:
+      - '*'
+    apiGroups:
+      - flink.apache.org
+    resources:
+      - flinkdeployments
