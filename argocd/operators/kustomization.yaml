@@ -1,6 +1,5 @@
 resources:
 - cert-manager
-- cp4i
 - ibm-apache-flink
 - ibm-apiconnect
 - ibm-app-connect
@@ -9,4 +8,6 @@ resources:
 - ibm-event-manager
 - ibm-event-processing
 - ibm-event-streams
+- ibm-foundational-services
 - ibm-mq
+- navigator

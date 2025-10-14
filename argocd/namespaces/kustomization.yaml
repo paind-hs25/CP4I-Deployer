@@ -2,7 +2,6 @@ resources:
 - cert-manager
 - ibm-apiconnect
 - ibm-app-connect
-- ibm-automation-assets
 - ibm-common-services
 - ibm-event-automation
 - ibm-mq

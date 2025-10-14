@@ -11,7 +11,7 @@ spec:
   destination:
     namespace: ibm-automation-assets
     server: 'https://kubernetes.default.svc'
-  project: default
+  project: automation-assets
   source:
     repoURL: 'https://github.com/paind-hs25/paind.v0.0.git'
     path: components/instances/ibm-automation-assets

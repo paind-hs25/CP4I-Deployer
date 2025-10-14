@@ -11,7 +11,7 @@ spec:
   destination:
     namespace: ibm-event-automation
     server: 'https://kubernetes.default.svc'
-  project: default
+  project: ibm-event-automation
   source:
     repoURL: 'https://github.com/paind-hs25/paind.v0.0.git'
     path: components/persistentvolumeclaims/ibm-apache-flink

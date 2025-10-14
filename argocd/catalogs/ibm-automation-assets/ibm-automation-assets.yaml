@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
-  project: default
+  project: automation-assets
   source:
     repoURL: 'https://github.com/paind-hs25/paind.v0.0.git'
     path: components/catalogs/automation-foundation-assets

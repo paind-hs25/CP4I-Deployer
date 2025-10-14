@@ -1,17 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: namespace-ibm-automation-assets
+  name: ibm-foundational-services-operator
   namespace: openshift-gitops
   annotations:
-    argocd.argoproj.io/sync-wave: "100"
+    argocd.argoproj.io/sync-wave: "200"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
+    namespace: openshift-operators
     server: 'https://kubernetes.default.svc'
-  project: default
+  project: foundational-services
   source:
     repoURL: 'https://github.com/paind-hs25/paind.v0.0.git'
-    path: components/namespaces/ibm-automation-assets
+    path: components/operators/foundational-services
     targetRevision: main
 
   syncPolicy:

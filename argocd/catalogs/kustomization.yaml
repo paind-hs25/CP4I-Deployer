@@ -3,9 +3,10 @@ resources:
 - ibm-apiconnect
 - ibm-app-connect
 - ibm-automation-assets
-- ibm-cp4i
+- ibm-cp4i-navigator
 - ibm-datapower-gateway
 - ibm-event-manager
 - ibm-event-processing
 - ibm-event-streams
+- ibm-foundational-services
 - ibm-mq

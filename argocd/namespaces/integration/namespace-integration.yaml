@@ -8,10 +8,10 @@ metadata:
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
-  project: default
+  project: cp4i-navigator
   source:
     repoURL: 'https://github.com/paind-hs25/paind.v0.0.git'
-    path: components/namespaces/cp4i
+    path: components/namespaces/integration
     targetRevision: main
 
   syncPolicy:
