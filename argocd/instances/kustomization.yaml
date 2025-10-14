@@ -5,6 +5,7 @@ resources:
 - ibm-appconnect-designer
 - ibm-automation-assets
 - ibm-event-manager
+- ibm-event-processing
 - ibm-event-streams
 - ibm-mq
 - platform-ui
