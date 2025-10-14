@@ -1,13 +1,11 @@
 apiVersion: integration.ibm.com/v1beta1
 kind: AssetRepository
 metadata:
-  name: asset-repository
-  namespace: ibm-automation-assets
   labels:
-    backup.integration.ibm.com/component: assetrepository     
+    backup.integration.ibm.com/component: assetrepository
+  name: assets
+  namespace: integration
 spec:
-  designerAIFeatures:
-    enabled: true
   license:
     accept: true
     license: L-CYPF-CRPF3H
@@ -15,7 +13,7 @@ spec:
   singleReplicaOnly: true
   storage:
     assetDataVolume:
-      class: ocs-external-storagecluster-ceph-rbd # User has to configure the name
+      class: ocs-external-storagecluster-ceph-rbd # adjust to your environment
     couchVolume:
-      class: ocs-external-storagecluster-ceph-rbd # User has to configure the name
-  version: "4.2"
+      class: ocs-external-storagecluster-ceph-rbd # adjust to your environment
+  version: '4.2'
