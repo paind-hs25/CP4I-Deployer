@@ -2,6 +2,9 @@ resources:
 # --- Namespaces ---
 - ../argocd/namespaces
 
+# --- PersistentVolumeClaims ---
+- ../argocd/persistentvolumeclaims
+
 # --- CatalogSources ---
 - ../argocd/catalogs
 
@@ -10,6 +13,12 @@ resources:
 
 # --- Operators ---
 - ../argocd/operators
+
+# --- cert-issuer ---
+- ../argocd/cert-issuer
+
+# --- Certificates ---
+- ../argocd/certificates
 
 # --- Instances ---
 - ../argocd/instances
