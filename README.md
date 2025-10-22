@@ -15,8 +15,7 @@ Create a Fork in your personal GitHub-account by clicking the `Fork` button:
 
 ### 2. Clone your forked repository on your local machine
 Change to a folder where you wanna clone the repository in and execute:
-
-```
+```bash
 git clone https://github.com/<your-github-username>/<your-repo-name>.git
 ```
 
@@ -40,6 +39,20 @@ In order that the CP4I can be deployed to OpenShift in a GitOps manner, ArgoCD n
     git commit -am "set the repoURL in all ArgoCD apps"
     git push origin main
     ```
+### 4. (**Only for non Techzone Clusters**) Set the appropriate storage classes from your OpenShift Cluster
+In order that CP4I can use the appropriate storage classes from your OpenShift Cluster, you need to set the storage classes in the CP4I instance manifests. Output the storage classes from your OpenShift Cluster by executing:
+```bash
+oc get storageclass
+```
+Then execute the following commands:
+```bash
+export BLOCK_STORAGE_CLASS="<your-block-storage-class-name>"
+export FILE_STORAGE_CLASS="<your-file-storage-class-name>"
+```
+And run the script `set-storage-classes.sh` in the scripts folder. **Make sure your in the root-folder** of the repository and run:
+```bash
+./scripts/set-storage-classes.sh
+```
 
 ## Installing custom ArgoCD
 When provisioning a cluster via IBM Techzone, then the GitOps-Operator is installed per default and with that a default ArgoCD instance. This default instance isn't sufficient for us, since we need e.g. additional health checks in order that ArgoCD can monitor our CP4I ressources. Therefore we gonna deploy a custom ArgoCD instance:
@@ -80,3 +93,27 @@ oc create secret docker-registry ibm-entitlement-key \
     --docker-server=cp.icr.io \
     --namespace=openshift-operators
 ```
+
+## Deploy CP4I
+First you have to deploy the ArgoCD projects where the ArgoCD applications for CP4I will be located in:
+```bash
+    oc apply -f argocd/projects/
+```
+
+Next you can deploy the CP4I using kustomize:
+```bash
+    oc apply -k bootstrap/
+```
+
+After a while you should see the CP4I applications being created in the ArgoCD UI and the CP4I getting deployed on your OpenShift Cluster. The Installation of all Instances can take up to 1 to 2 hours. You can apply the following command in order to see when the platform-ui is ready:
+```bash
+    oc wait --for=condition=Ready pod -l app=platform-ui -n integration --timeout=3000s
+```
+The platform-ui should be deployed in 15-30 minutes. Once the platform-ui is ready, you can access the CP4I platform UI by clicking on the the Grid Menu in the OpenShift Web Console and selecting `Integration Platform UI`:
+
+<img src=images/image2.png alt="Grid Menu" width="400"/>
+
+Once you're logged in, you can monitor the progress of the installations in the Platform UI Dashboard:
+
+<img src=images/image3.png alt="Platform UI Dashboard" width="600"/>
+
