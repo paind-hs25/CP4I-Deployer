@@ -39,5 +39,5 @@ spec:
   storage:
     size: 5Gi
     type: persistent-claim
-    class: ocs-external-storagecluster-cephfs # must be adapted to the cluster
+    class: ocs-external-storagecluster-cephfs #file
   version: '13.0'

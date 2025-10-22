@@ -17,7 +17,7 @@ spec:
     storage:
       size: 10Gi
       type: persistent-claim
-      class: ocs-external-storagecluster-ceph-rbd # must be adapted to the cluster
+      class: ocs-external-storagecluster-ceph-rbd #block
   license:
     accept: true
     license: L-KPRV-AUG9NC

@@ -56,7 +56,7 @@ spec:
         storage:
           type: persistent-claim
           size: 2Gi
-          class: ocs-external-storagecluster-ceph-rbd # adjust based on environment
+          class: ocs-external-storagecluster-ceph-rbd #block
         roles:
           - broker
         resources:
@@ -71,6 +71,6 @@ spec:
         storage:
           type: persistent-claim
           size: 4Gi
-          class: ocs-external-storagecluster-ceph-rbd # adjust based on environment
+          class: ocs-external-storagecluster-ceph-rbd #block
         roles:
           - controller

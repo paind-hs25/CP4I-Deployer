@@ -13,7 +13,7 @@ spec:
   singleReplicaOnly: true
   storage:
     assetDataVolume:
-      class: ocs-external-storagecluster-ceph-rbd # adjust to your environment
+      class: ocs-external-storagecluster-ceph-rbd #block
     couchVolume:
-      class: ocs-external-storagecluster-ceph-rbd # adjust to your environment
+      class: ocs-external-storagecluster-ceph-rbd #block
   version: '4.2'

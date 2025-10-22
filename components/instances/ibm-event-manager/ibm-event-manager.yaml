@@ -15,5 +15,5 @@ spec:
     authConfig:
       authType: INTEGRATION_KEYCLOAK
     storage:
-      storageClassName: ocs-external-storagecluster-ceph-rbd # adjust to your environment
+      storageClassName: ocs-external-storagecluster-ceph-rbd #block
       type: persistent-claim

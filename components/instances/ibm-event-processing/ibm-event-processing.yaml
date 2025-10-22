@@ -18,6 +18,6 @@ spec:
   authoring:
     storage:
       type: persistent-claim
-      storageClassName: ocs-external-storagecluster-cephfs # adjust to your environment
+      storageClassName: ocs-external-storagecluster-cephfs #file
     authConfig:
       authType: LOCAL
