@@ -107,11 +107,22 @@ Next you can deploy the CP4I using kustomize:
 
 After a while you should see the CP4I applications being created in the ArgoCD UI and the CP4I getting deployed on your OpenShift Cluster. The Installation of all Instances can take up to 1 to 2 hours. You can apply the following command in order to see when the platform-ui is ready:
 ```bash
-    oc wait --for=condition=Ready pod -l app=platform-ui -n integration --timeout=3000s
+    while ! oc wait --for=condition=Ready pod -l app.kubernetes.io/instance=platform-ui -n integration ; do sleep 30; done
 ```
-The platform-ui should be deployed in 15-30 minutes. Once the platform-ui is ready, you can access the CP4I platform UI by clicking on the the Grid Menu in the OpenShift Web Console and selecting `Integration Platform UI`:
+The platform-ui should be deployed in 15-30 minutes. Once the platform-ui is ready, you can access the CP4I platform UI by clicking on the the Grid Menu in the OpenShift Web Console and selecting `IBM Cloud Pak for Integration`:
 
-<img src=images/image2.png alt="Grid Menu" width="400"/>
+<img src=images/image2.png alt="Grid Menu" width="200"/>
+
+To retrieve the username and password for the platform UI, execute the following commands:
+
+For the username:
+```bash
+    oc get secret integration-admin-initial-temporary-credentials -n ibm-common-services -o jsonpath="{.data.username}" | base64 --decode
+```
+For the password:
+```bash
+    oc get secret integration-admin-initial-temporary-credentials -n ibm-common-services -o jsonpath="{.data.password}" | base64 --decode
+```
 
 Once you're logged in, you can monitor the progress of the installations in the Platform UI Dashboard:
 
