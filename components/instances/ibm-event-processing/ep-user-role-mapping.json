@@ -1,0 +1,10 @@
+{
+  "mappings": [
+    {
+      "id": "demouser",
+      "roles": [
+        "user"
+      ]
+    }
+  ]
+}
