@@ -9,4 +9,4 @@ spec:
   resources:
     requests:
       storage: 20Gi
-  storageClassName: ocs-external-storagecluster-cephfs # must be adapted to the cluster
+  storageClassName: ocs-external-storagecluster-cephfs #file
