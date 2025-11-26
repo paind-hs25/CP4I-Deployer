@@ -157,20 +157,32 @@ try:
 
     # First, we need to get the user registries so that we can create a new user who will be the Provider Organization Owner
 
-    url = 'https://' + environment_config["APIC_ADMIN_URL"] + '/api/cloud/settings/user-registries'
+    provider_registries = response.json()['provider_user_registry_urls']
 
-    response = api_calls.make_api_call(url, admin_bearer_token, 'get')
+    managed_registry_url = None
 
-    if response.status_code != 200:
-          raise Exception("Return code for retrieving the user registries isn't 200. It is " + str(response.status_code))
-    
-    provider_user_registry_default_url = response.json()['provider_user_registry_default_url']
+    # search for managed registry
+    for registry_url in provider_registries:
+        registry_details = api_calls.make_api_call(registry_url, admin_bearer_token, 'get')
+        
+        if registry_details.status_code != 200:
+            raise Exception("Could not get registry details for: " + registry_url)
+
+        registry_info = registry_details.json()
+
+        if registry_info.get("management_type") == "managed":
+            managed_registry_url = registry_url
+            break
+
+    if managed_registry_url is None:
+        raise Exception("No managed provider user registry found. Cannot continue.")
+
     if DEBUG:
-        print(info(10) + "Default Provider User Registry url: " + provider_user_registry_default_url)
+        print(info(10) + f"Using managed Provider User Registry: {managed_registry_url}")
 
     # Then, we need to register the user that will be the Provider Organization owner
 
-    url = provider_user_registry_default_url + '/users'
+    url = managed_registry_url + '/users'
 
     # Create the data object
     # Ideally this should be loaded from a sealed secret.
