@@ -53,7 +53,7 @@ spec:
           name: apic-pipeline-provider-org
     env:
       - name: CONFIG_FILES_DIR
-        value: $(params.source-dir)/config
+        value: $(params.source-dir)/components/pipelines/apic
   steps:
     - name: git-clone
       image: quay.io/ibmgaragecloud/alpine-git
