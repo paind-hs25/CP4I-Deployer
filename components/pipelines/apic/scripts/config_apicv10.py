@@ -80,6 +80,7 @@ try:
     if DEBUG:
         print(info(3) + "Admin Org ID: " + admin_org_id)
 
+
 ############################################
 # Step 6 - Create a Provider Organization #
 ############################################
@@ -89,6 +90,8 @@ try:
     print(info(10) + "############################################")
 
     # First, we need to get the user registries so that we can create a new user who will be the Provider Organization Owner
+    url = 'https://' + environment_config["APIC_ADMIN_URL"] + '/api/cloud/settings/user-registries'
+    response = api_calls.make_api_call(url, admin_bearer_token, 'get')
 
     provider_registries = response.json()['provider_user_registry_urls']
 
