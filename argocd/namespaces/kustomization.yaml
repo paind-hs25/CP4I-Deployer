@@ -6,3 +6,4 @@ resources:
 - ibm-event-automation
 - ibm-mq
 - integration
+- ci
