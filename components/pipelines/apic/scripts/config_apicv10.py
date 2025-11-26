@@ -92,7 +92,9 @@ try:
     # First, we need to get the user registries so that we can create a new user who will be the Provider Organization Owner
     url = 'https://' + environment_config["APIC_ADMIN_URL"] + '/api/cloud/settings/user-registries'
     response = api_calls.make_api_call(url, admin_bearer_token, 'get')
-
+    if response.status_code != 200:
+        raise Exception("Return code for retrieving the user registries isn't 200. It is " + str(response.status_code))
+    
     provider_registries = response.json()['provider_user_registry_urls']
 
     managed_registry_url = None
@@ -106,7 +108,7 @@ try:
 
         registry_info = registry_details.json()
 
-        if registry_info.get("management_type") == "managed":
+        if registry_info.get("user_registry_managed") == "true":
             managed_registry_url = registry_url
             break
 
