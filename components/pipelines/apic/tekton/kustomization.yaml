@@ -1,0 +1,10 @@
+resources:
+# APIC Pipelines
+- pipelines/apic-config-pipeline.yaml
+
+# APIC Task
+- tasks/apic-config-task.yaml
+
+# APIC Pipeline Role and RoleBinding
+- roles/role.yaml
+- roles/rolebinding.yaml
