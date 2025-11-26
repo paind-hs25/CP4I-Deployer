@@ -80,6 +80,72 @@ try:
     if DEBUG:
         print(info(3) + "Admin Org ID: " + admin_org_id)
 
+####################################
+# Step 4 - Create the Email Server #
+####################################
+
+    print(info(4) + "####################################")
+    print(info(4) + "# Step 4 - Create the Email Server #")
+    print(info(4) + "####################################")
+    
+    url = 'https://' + environment_config["APIC_ADMIN_URL"] + '/api/orgs/' + admin_org_id + '/mail-servers'
+    
+    # Create the data object
+    data = {}
+    data['title'] = 'Default Email Server'
+    data['name'] = 'default-email-server'
+    data['host'] = os.environ['EMAIL_HOST']
+    data['port'] = int(os.environ['EMAIL_PORT'])
+    credentials = {}
+    credentials['username'] = os.environ['EMAIL_USERNAME']
+    credentials['password'] = os.environ['EMAIL_PASSWORD']
+    data['credentials'] = credentials
+    data['tls_client_profile_url'] = None
+    data['secure'] = False
+
+    if DEBUG:
+        print(info(4) + "This is the data object:")
+        print(info(4), data)
+        print(info(4) + "This is the JSON dump:")
+        print(info(4), json.dumps(data))
+
+    response = api_calls.make_api_call(url, admin_bearer_token, 'post', data)
+
+    if response.status_code != 201:
+          raise Exception("Return code for creating the Email Server isn't 201. It is " + str(response.status_code))
+    email_server_url = response.json()['url']
+    if DEBUG:
+        print(info(4) + "Email Server url: " + email_server_url)
+
+##################################################
+# Step 5 - Sender and Email Server Configuration #
+##################################################
+
+    print(info(5) + "##################################################")
+    print(info(5) + "# Step 5 - Sender and Email Server Configuration #")
+    print(info(5) + "##################################################")
+
+    url = 'https://' + environment_config["APIC_ADMIN_URL"] + '/api/cloud/settings'
+    
+    # Create the data object
+    # Ideally this would also be loaded from a sealed secret
+    data = {}
+    data['mail_server_url'] = email_server_url
+    email_sender = {}
+    email_sender['name'] = 'APIC Administrator'
+    email_sender['address'] = 'test@test.com'
+    data['email_sender'] = email_sender
+
+    if DEBUG:
+        print(info(5) + "This is the data object:")
+        print(info(5), data)
+        print(info(5) + "This is the JSON dump:")
+        print(info(5), json.dumps(data))
+
+    response = api_calls.make_api_call(url, admin_bearer_token, 'put', data)
+
+    if response.status_code != 200:
+          raise Exception("Return code for Sender and Email Server configuration isn't 200. It is " + str(response.status_code))
 
 ############################################
 # Step 6 - Create a Provider Organization #
