@@ -108,7 +108,7 @@ try:
 
         registry_info = registry_details.json()
 
-        if registry_info.get("user_registry_managed") == "true":
+        if registry_info.get("user_registry_managed") == True:
             managed_registry_url = registry_url
             break
 
