@@ -79,7 +79,7 @@ try:
         raise Exception("[ERROR] - The Admin Organization was not found in the IBM API Connect Cluster instance")
     if DEBUG:
         print(info(3) + "Admin Org ID: " + admin_org_id)
-
+"""
 ####################################
 # Step 4 - Create the Email Server #
 ####################################
@@ -146,7 +146,7 @@ try:
 
     if response.status_code != 200:
           raise Exception("Return code for Sender and Email Server configuration isn't 200. It is " + str(response.status_code))
-
+"""
 ############################################
 # Step 6 - Create a Provider Organization #
 ############################################
@@ -180,7 +180,6 @@ try:
     data['email'] = os.environ["PROV_ORG_OWNER_EMAIL"]
     data['first_name'] = os.environ["PROV_ORG_OWNER_FIRST_NAME"]
     data['last_name'] = os.environ["PROV_ORG_OWNER_LAST_NAME"]
-    data['password'] = os.environ["PROV_ORG_OWNER_PASSWORD"]
 
     if DEBUG:
         print(info(10) + "This is the data object:")
