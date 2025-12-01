@@ -6,11 +6,11 @@ spec:
   params:
     - name: git-apic-pipeline-git-url
       type: string
-      default: 'https://github.com/<GIT_ORG>/apic-config-pipeline.git'
+      default: 'https://github.com/<GIT_ORG>/CP4I-Deployer.git'
       description: GitHub url where the pipeline scripts are stored. These are the scripts the pipeline will execute
     - name: git-apic-pipeline-git-branch
       type: string
-      default: master
+      default: main
       description: Github branch for the pipeline scripts
     - name: apic-project
       type: string
