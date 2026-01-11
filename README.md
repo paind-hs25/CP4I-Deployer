@@ -1,5 +1,5 @@
 # CP4I Deployer
-This repository contains all the necessary resources in order to deploy IBM Cloud Pak for Integration (CP4I) fully automated on an OpenShift Cluster in a GitOps manner.
+This repository declaratively describes an IBM Cloud Pak for Integration (CP4I) Demo Environment. With the following instructions you can deploy the CP4I Demo Environment partially automated on an OpenShift Cluster in a GitOps manner using ArgoCD.
 
 ## Prerequisites
 * Obtain an OCP Cluster. You can provision a cluster on [Techzone](https://techzone.ibm.com/collection/tech-zone-certified-base-images/journey-vmware-on-ibm-cloud-environments).
@@ -107,7 +107,7 @@ Next you can deploy the CP4I using kustomize:
 
 After a while you should see the CP4I applications being created in the ArgoCD UI and the CP4I getting deployed on your OpenShift Cluster. The Installation of all Instances can take up to 1 to 2 hours. You can apply the following command in order to see when the platform-ui is ready:
 ```bash
-    while ! oc wait --for=condition=Ready pod -l app.kubernetes.io/instance=platform-ui -n integration ; do sleep 30; done
+    while ! oc wait --for=condition=Ready pod -l app.kubernetes.io/instance=platform-ui -n integration >/dev/null 2>&1; do sleep 30; done
 ```
 The platform-ui should be deployed in 15-30 minutes. Once the platform-ui is ready, you can access the CP4I platform UI by clicking on the the Grid Menu in the OpenShift Web Console and selecting `IBM Cloud Pak for Integration`:
 
@@ -128,3 +128,21 @@ Once you're logged in, you can monitor the progress of the installations in the 
 
 <img src=images/image3.png alt="Platform UI Dashboard" width="600"/>
 
+## Set Event Processing User
+In order to use the Event Processing Instance in CP4I, you need to set the Event Processing User manually.
+
+Execute the follwing command in order to apply the Secret with the Event Processing User credentials:
+```bash
+oc create secret generic eventprocessing-instance-ibm-ep-user-credentials \
+  --from-file=components/instances/ibm-event-processing/ep-user.json \
+  -n ibm-event-automation \
+  --dry-run=client -o yaml | oc apply -f -
+```
+
+Next, execute the following command in order to apply the Event Processing User roles:
+```bash
+oc create secret generic eventprocessing-instance-ibm-ep-user-roles \
+  --from-file=components/instances/ibm-event-processing/ep-user-role-mapping.json \
+  -n ibm-event-automation \
+  --dry-run=client -o yaml | oc apply -f -
+```
