@@ -134,7 +134,7 @@ In order to use the Event Processing Instance in CP4I, you need to set the Event
 Execute the follwing command in order to apply the Secret with the Event Processing User credentials:
 ```bash
 oc create secret generic eventprocessing-instance-ibm-ep-user-credentials \
-  --from-file=components/instances/ibm-event-processing/ep-user.json \
+  --from-file=components/instances/ibm-event-processing/user-credentials.json \
   -n ibm-event-automation \
   --dry-run=client -o yaml | oc apply -f -
 ```
@@ -142,7 +142,53 @@ oc create secret generic eventprocessing-instance-ibm-ep-user-credentials \
 Next, execute the following command in order to apply the Event Processing User roles:
 ```bash
 oc create secret generic eventprocessing-instance-ibm-ep-user-roles \
-  --from-file=components/instances/ibm-event-processing/ep-user-role-mapping.json \
+  --from-file=components/instances/ibm-event-processing/user-mapping.json \
   -n ibm-event-automation \
   --dry-run=client -o yaml | oc apply -f -
 ```
+
+The username of the Event Processing User is now set to `demouser` and the password to `Passw!rd`.
+
+## Run Pipeline for APIC Configuration
+In order to be able to use APIC, it is necessary to configure a Mail Server and a Provider Organization. We'll use a Tekton Pipeline to automate this configuration.
+
+Before you can run the Pipeline, you need to create two Secrets in the `ci`namespace:
+
+Replace <mail-server-password> with the actual password in the following command and execute it:
+```bash
+oc create secret generic apic-config-email-server \
+-n ci \
+--from-literal=EMAIL_HOST=lx3.hoststar.hosting \
+--from-literal=EMAIL_PORT=587 \
+--from-literal=EMAIL_USERNAME=cp4i@cp4i.tech \
+--from-literal=EMAIL_PASSWORD='<mail-server-password>'
+```
+
+Then execute the following command to create the Provider Organization secret:
+```bash
+oc create secret generic apic-pipeline-provider-org \
+-n ci \
+--from-literal=PROV_ORG_OWNER_USERNAME=testorgadmin \
+--from-literal=PROV_ORG_OWNER_PASSWORD=passw0rd \
+--from-literal=PROV_ORG_OWNER_EMAIL=cp4i@cp4i.tech \
+--from-literal=PROV_ORG_OWNER_FIRST_NAME=demo \
+--from-literal=PROV_ORG_OWNER_LAST_NAME=demo \
+--from-literal=PROV_ORG_TITLE="Demo Org"
+```
+
+Now you can run the Tekton Pipeline to configure APIC. On the OpenShift Web Console, navigate to pipelines in the side menu and select the `ci` project/namespace:
+
+<img src=images/image4.png alt="Platform UI Dashboard" width="600"/>
+
+Then select the apic-post-install-config Pipeline and click `Start` on the top right:
+
+<img src=images/image5.png alt="Platform UI Dashboard" width="600"/>
+
+Now replace `<GIT_ORG>` with your GitHub username in order to point to your forked repository and click `Start`:
+
+<img src=images/image6.png alt="Platform UI Dashboard" width="600"/>
+
+You can monitor the progress of the Pipeline in the Logs tab. Once the Pipeline has successfully finished, you can log in to the API Manager. Therefore log in with the `API Manager User Registry`.
+
+The username is `testorgadmin` and the password is `passw0rd`.
+
