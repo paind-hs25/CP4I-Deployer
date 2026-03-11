@@ -154,7 +154,7 @@ In order to be able to use APIC, it is necessary to configure a Mail Server and 
 
 Before you can run the Pipeline, you need to create two Secrets in the `ci`namespace:
 
-Replace <mail-server-password> with the actual password in the following command and execute it:
+Replace <mail-server-password> with the actual password in the following command and execute it. You can find the eMail-password [here](https://github.ibm.com/msit/CP4IStack/blob/master/info/users.md).
 ```bash
 oc create secret generic apic-config-email-server \
 -n ci \
