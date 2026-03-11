@@ -10,7 +10,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: apic
   source:
-    repoURL: 'https://github.com/paind-hs25/paind.v0.0.git'
+    repoURL: ' '
     path: components/namespaces/ibm-apiconnect
     targetRevision: main
 

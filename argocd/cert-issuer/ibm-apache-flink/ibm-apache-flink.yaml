@@ -13,7 +13,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: cert-manager
   source:
-    repoURL: 'https://github.com/paind-hs25/paind.v0.0.git'
+    repoURL: ' '
     path: components/cert-issuer/ibm-apache-flink
     targetRevision: main
 

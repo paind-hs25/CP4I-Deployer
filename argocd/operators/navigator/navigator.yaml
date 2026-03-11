@@ -13,7 +13,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: cp4i-navigator
   source:
-    repoURL: 'https://github.com/paind-hs25/paind.v0.0.git'
+    repoURL: ' '
     path: components/operators/navigator
     targetRevision: main
 
